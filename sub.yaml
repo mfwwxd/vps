@@ -15,7 +15,7 @@ dns:
   fallback: ['tls://1.0.0.1:853', 'https://cloudflare-dns.com/dns-query', 'https://dns.google/dns-query']
   fallback-filter: { geoip: true, ipcidr: [240.0.0.0/4, 0.0.0.0/32] }
 proxies:
-  - { name: '🇺🇸①美国｜US x1.0🔓', type: trojan, server: lsj01.wangxd.life, port: 3052, uuid: 3a2c0c6c-9ee5-c05f-c951-fcd73831983e,udp: true}
+  - { name: '🇺🇸①美国｜US x1.0🔓', type: trojan, server: lsj03.wangxd.life, port: 3052, uuid: ae71ffdc-3206-3b4d-3f4e-e3b63684a556,udp: true}
   - { name: '🇺🇸②美国｜US x1.0🔓', type: trojan, server: lsj02.wangxd.life, port: 3052, password: 3a2c0c6c-9ee5-c05f-c951-fcd73831983e, udp: true }
 proxy-groups:
   - { name: wangxd, type: select, proxies: [自动选择, 故障转移,'🇺🇸①美国｜US x1.0🔓','🇺🇸②美国｜US x1.0🔓'] }
