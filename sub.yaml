@@ -15,11 +15,12 @@ dns:
   fallback: ['tls://1.0.0.1:853', 'https://cloudflare-dns.com/dns-query', 'https://dns.google/dns-query']
   fallback-filter: { geoip: true, ipcidr: [240.0.0.0/4, 0.0.0.0/32] }
 proxies:
-  - { name: '🇰🇷韩国｜KR x1', type: vmess, server: lsj02.wangxd.life, port: '3052', uuid: 3a2c0c6c-9ee5-c05f-c951-fcd73831983e, alterId: 0, cipher: auto, udp: true }
+  - { name: 'US洛杉矶｜US x1', type: vmess, server: lsj02.wangxd.life, port: '3052', uuid: 3a2c0c6c-9ee5-c05f-c951-fcd73831983e, alterId: 0, cipher: auto, udp: true,network: ws  }
+  - { name: 'US洛杉矶2｜US x1', type: trojan, server: lsj02.wangxd.life, port: 3052, password: 3a2c0c6c-9ee5-c05f-c951-fcd73831983e, udp: true }
 proxy-groups:
-  - { name: wangxd, type: select, proxies: [自动选择, 故障转移,'🇰🇷韩国｜KR x1'] }
-  - { name: 自动选择, type: url-test, proxies: [ '🇰🇷韩国｜KR x1'], url: 'http://www.gstatic.com/generate_204', interval: 86400 }
-  - { name: 故障转移, type: fallback, proxies: [  '🇰🇷韩国｜KR x1'], url: 'http://www.gstatic.com/generate_204', interval: 7200 }
+  - { name: wangxd, type: select, proxies: [自动选择, 故障转移,'US洛杉矶｜US x1','US洛杉矶2｜US x1'] }
+  - { name: 自动选择, type: url-test, proxies: ['US洛杉矶｜US x1','US洛杉矶2｜US x1'], url: 'http://www.gstatic.com/generate_204', interval: 86400 }
+  - { name: 故障转移, type: fallback, proxies: [  'US洛杉矶｜US x1','US洛杉矶2｜US x1'], url: 'http://www.gstatic.com/generate_204', interval: 7200 }
 rules:
   - 'DOMAIN-SUFFIX,services.googleapis.cn,wangxd'
   - 'DOMAIN-SUFFIX,xn--ngstr-lra8j.com,wangxd'
